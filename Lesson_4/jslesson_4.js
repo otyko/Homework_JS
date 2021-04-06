@@ -119,63 +119,63 @@ maxNum(num1 = +prompt(), num2 = +prompt(), num3 = +prompt());
 
 // 5) створити функцію яка повертає найбільше число з масиву
 
-let maxNum = [];
-
 function maxNumArray(array = []) {
-    for (i = randomArray.length - 1; i > 0; i--) {
+    let maxNum = [];
+    for (let i = randomArray.length - 1; i > 0; i--) {
         if (maxNum < randomArray[i]) {
             maxNum = randomArray[i];
         }
     }
+    return maxNum;
 }
 
 maxNumArray();
 console.log('--------------------------------------------');
-console.log(maxNum);
+console.log(maxNumArray());
 
 // 6) створити функцію яка повертає найменьше число з масиву
 
-let minNum = [732];
-
 function minNumArray(array = []) {
-    for (i = randomArray.length; i > 0; i--) {
+    let minNum = [732];
+    for (let i = randomArray.length; i > 0; i--) {
         if (minNum > randomArray[i]) {
             minNum = randomArray[i];
         }
     }
+    return minNum;
 }
 
 minNumArray();
 console.log('--------------------------------------------');
-console.log(minNum);
+console.log(minNumArray());
 
 // 7) створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його.
 
-let summNum = 0;
-
 function summNumArr(array = []) {
+    let summNum = 0;
     for (let i = 0; i < randomArray.length; i++) {
         summNum += randomArray[i];
     }
+    return summNum;
 }
 
 summNumArr();
-console.log(summNum);
+console.log(summNumArr());
 
 // 8) створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
 
-let summNumMiddle = 0;
-let summNum = 0;
-
 function summNumArrMiddle(array = []) {
+    let summNumMiddle = 0;
+    let summNum = 0;
     for (let i = 0; i < randomArray.length; i++) {
         summNum += randomArray[i];
     }
-    summNumMiddle = summNum / randomArray.length
+    summNumMiddle = summNum / randomArray.length;
+    return summNumMiddle;
 }
 
 summNumArrMiddle();
-console.log(summNumMiddle);
+console.log(summNumArrMiddle());
 
 // 9) Створити функцію яка приймає масив будь яких объектів, та повертає масив ключів всіх обєктів
 // EXAMPLE:
@@ -183,7 +183,7 @@ console.log(summNumMiddle);
 
 function objectKeysArr(array = []) {
     let keysArr = Object.keys(array);
-    for (i= 0;i< array.length;i++) {
+    for (let i= 0;i< array.length;i++) {
         let keysArrrelement = Object.keys(array[i]);
         console.log(keysArrrelement);
     }
@@ -197,7 +197,7 @@ objectKeysArr(users);
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
 
 function objectValuesArr(array = []) {
-    for (user of users) {
+    for (let user of users) {
         let arrValuesAll = [];
         let valuesArr = Object.values(user);
         arrValuesAll.push(valuesArr);
@@ -219,19 +219,20 @@ objectValuesArr();
 
 let arrNum1 = [1, 2, 3, 4];
 let arrNum2 = [2, 3, 4, 5,];
-let sumnum = [];
 
 function sumArrnum(array = []) {
-    for (i = 0; i < arrNum1.length; i++) {
+    let sumnum = [];
+    for (let i = 0; i < arrNum1.length; i++) {
         for (i = 0; i < arrNum2.length; i++) {
-                let sum = arrNum1[i] + arrNum2[i];
-                sumnum.push(sum);
+            let sum = arrNum1[i] + arrNum2[i];
+            sumnum.push(sum);
         }
     }
+    return sumnum;
 }
 
 sumArrnum();
-console.log(sumnum);
+console.log(sumArrnum());
 
 // - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
 
@@ -249,8 +250,8 @@ function minMaxNum() {
     console.log(max)
     return min;
 }
-let minNum = minMaxNum(1,2,3,4,5,6,7,8,9,10);
-console.log(minNum);
+let minNums = minMaxNum(1,2,3,4,5,6,7,8,9,10);
+console.log(minNums);
 
 //===================================================================================================================
 // - Взяти задачі з завдання 10 та 9 та обєднати їх в одну динамічну функцію.
@@ -265,15 +266,22 @@ console.log(minNum);
 //   foo([9,8,0,4], 2) // ==> [ 9, 8, 4, 0 ]
 
 function arrPositionI(array = [], i = 0) {
-    for (n = 0; n < array.length; n++) if (n === i) {
-        let arr = array[n]
-        array[n] = array[n + 1];
-        array[n + 1] = arr;
+    for (let n = 0; n < array.length; n++) {
+        if (i >= array.length - 1 || i < 0) {
+            alert('Bad number');
+            break;
+        }
+        if (n === i) {
+            let arr = array[n]
+            array[n] = array[n + 1];
+            array[n + 1] = arr;
+            console.log(array);
+        }
     }
-    console.log(array);
+
 }
 
-arrPositionI([9, 8, 0, 4], 1)
+arrPositionI([9, 8, 0, 4], -1)
 
 // - Сворити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.
 // Двожина масиву від 2 до 100
@@ -341,9 +349,77 @@ let strArgument = (elemnt = 'h6',text = 'Hello owu')=>{
 strArgument('h1','Тип елементу та текст отриманий через аргументи');
 
 // - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
-
-
 // Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали. Всі властивості авто в обному блоці
+
+let cars = [{
+    id: 1,
+    brands: 'Acura',
+    price: 10000,
+    age: 5,
+    type: 'sedan',
+    status: true,
+    image: 'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/8/12/754788777892128.jpeg'
+}, {
+    id: 2,
+    brands: 'Audi',
+    price: 15000,
+    age: 3,
+    type: 'cupe',
+    status: true,
+    image: 'https://autoua.net/media/uploads/audi/2020-audi-a3-sportback_(1).jpg'
+}, {
+    id: 3,
+    brands: 'BMV',
+    price: 17000,
+    age: 2,
+    type: 'sport',
+    status: false,
+    image: 'https://vehicle.img.symfio.de/320x,q85/vehicle/zO3n6b/5d5c0ee37585cd2d780369e5/5f200389408233.39627574.jpeg'
+}, {
+    id: 4,
+    brands: 'Volvo',
+    price: 14000,
+    age: 4,
+    type: 'caravan',
+    status: true,
+    image: 'https://airport.volvocarsdealer.com/uploads/media/dc_car_gallery/0001/34/thumb_33153_dc_car_gallery_new_slider.jpeg'
+}, {
+    id: 5,
+    brands: 'Ford',
+    price: 9000,
+    age: 1,
+    type: 'miniven',
+    status: false,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-91bUrC7Hv3d0FNAMtTasgl7GNnSB5k0Siw&usqp=CAU'
+}, {
+    id: 6,
+    brands: 'Fiat',
+    price: 4000,
+    age: 5,
+    type: 'sedan',
+    status: false,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRitD1qgWLlhtu83HhWcOyxelqrW1Fo6KflVA&usqp=CAU'
+}];
+
+let getBlockCarWithId = (array = [], id = '') => {
+    for (car of cars) {
+        const blockCar = document.createElement('div')
+        blockCar.id = id;
+        blockCar.innerHTML = `<h4>${car.id} ${car.brands} ${car.price}$  age:${car.age}years ${car.type} ${car.status}</h4>`;
+
+        const imgCar = document.createElement('img');
+        imgCar.src = car.image;
+        imgCar.style.width = '300px';
+        imgCar.style.height = '200px';
+        blockCar.prepend(imgCar);
+
+        blockCar.style.marginBottom = '4px';
+        document.body.appendChild(blockCar);
+    }
+
+}
+getBlockCarWithId(cars, 'id_car');
+
 // - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
 // Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали.
 // Для кожної властивості створити всередені блока автомоблія свій блок
