@@ -136,7 +136,7 @@ console.log(num);
 
 function minNumArray(array = []) {
     let minNum = Infinity;
-    for (let i = array.length-1; i >= 0; i--) {
+    for (let i = array.length - 1; i >= 0; i--) {
         if (minNum > array[i]) {
             minNum = array[i];
         }
@@ -157,7 +157,7 @@ function summNumArr(array = []) {
     return summNum;
 }
 
-let summ =  summNumArr([1, 2, 122, 123, 12, 100, 100550]);
+let summ = summNumArr([1, 2, 122, 123, 12, 100, 100550]);
 console.log(summ);
 
 // 8) створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
@@ -216,15 +216,15 @@ console.log(arrValue);
 // результат
 //     [3,5,7,9]
 
-function sumArrnum(array1 = [],array2=[]) {
+function sumArrnum(array1 = [], array2 = []) {
     let sumnum = [];
-    for (let num in array1 ) {
-            sumnum.push(array1[num] + array2[num]);
-        }
+    for (let num in array1) {
+        sumnum.push(array1[num] + array2[num]);
+    }
     return sumnum;
 }
 
-let arrSumm =  sumArrnum([1, 2, 3, 4],[2, 3, 4, 5,]);
+let arrSumm = sumArrnum([1, 2, 3, 4], [2, 3, 4, 5,]);
 console.log(arrSumm);
 
 // - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
