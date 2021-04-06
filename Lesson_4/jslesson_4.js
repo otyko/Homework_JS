@@ -1,4 +1,4 @@
-// 1) створити функцію яка приймає масив та виводить його
+//  1) створити функцію яка приймає масив та виводить його
 
 let users = [{
     name: 'vasya',
@@ -120,95 +120,94 @@ maxNum(num1 = +prompt(), num2 = +prompt(), num3 = +prompt());
 // 5) створити функцію яка повертає найбільше число з масиву
 
 function maxNumArray(array = []) {
-    let maxNum = [];
-    for (let i = randomArray.length - 1; i > 0; i--) {
-        if (maxNum < randomArray[i]) {
-            maxNum = randomArray[i];
+    let maxNum = -Infinity;
+    for (let i = array.length - 1; i > 0; i--) {
+        if (maxNum < array[i]) {
+            maxNum = array[i];
         }
     }
     return maxNum;
 }
 
-maxNumArray();
-console.log('--------------------------------------------');
-console.log(maxNumArray());
+let num = maxNumArray([1, 2, 122, 123, 12, 100, 100550]);
+console.log(num);
 
 // 6) створити функцію яка повертає найменьше число з масиву
 
 function minNumArray(array = []) {
-    let minNum = [732];
-    for (let i = randomArray.length; i > 0; i--) {
-        if (minNum > randomArray[i]) {
-            minNum = randomArray[i];
+    let minNum = Infinity;
+    for (let i = array.length-1; i >= 0; i--) {
+        if (minNum > array[i]) {
+            minNum = array[i];
         }
     }
     return minNum;
 }
 
-minNumArray();
-console.log('--------------------------------------------');
-console.log(minNumArray());
+let numMin = minNumArray([1, 2, 122, 123, 12, 100, 100550]);
+console.log(numMin);
 
 // 7) створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його.
 
 function summNumArr(array = []) {
     let summNum = 0;
-    for (let i = 0; i < randomArray.length; i++) {
-        summNum += randomArray[i];
+    for (let i = 0; i < array.length; i++) {
+        summNum += array[i];
     }
     return summNum;
 }
 
-summNumArr();
-console.log(summNumArr());
+let summ =  summNumArr([1, 2, 122, 123, 12, 100, 100550]);
+console.log(summ);
 
 // 8) створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
 
 function summNumArrMiddle(array = []) {
-    let summNumMiddle = 0;
+    let summNumMiddle;
     let summNum = 0;
-    for (let i = 0; i < randomArray.length; i++) {
-        summNum += randomArray[i];
+    for (let i = 0; i < array.length; i++) {
+        summNum += array[i];
     }
-    summNumMiddle = summNum / randomArray.length;
+    summNumMiddle = summNum / array.length;
     return summNumMiddle;
 }
 
-summNumArrMiddle();
-console.log(summNumArrMiddle());
+let summMidle = summNumArrMiddle([1, 2, 122, 123, 12, 100, 100550]);
+console.log(summMidle);
 
 // 9) Створити функцію яка приймає масив будь яких объектів, та повертає масив ключів всіх обєктів
 // EXAMPLE:
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ name, age, model ]
 
-function objectKeysArr(array = []) {
-    let keysArr = Object.keys(array);
-    for (let i= 0;i< array.length;i++) {
-        let keysArrrelement = Object.keys(array[i]);
-        console.log(keysArrrelement);
+function objectKeysArr(array) {
+    let keysArr = [];
+    for (let i = 0; i < array.length; i++) {
+        for (let ellement in array[i]) {
+            keysArr.push(ellement);
+        }
     }
-    console.log(keysArr);
+    return keysArr;
 }
 
-objectKeysArr(users);
+let arrKeys = objectKeysArr([{name: 'Dima', age: 13}, {model: 'Camry'}]);
+console.log(arrKeys);
 
 // 10) Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
 // EXAMPLE:
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
 
 function objectValuesArr(array = []) {
-    for (let user of users) {
-        let arrValuesAll = [];
-        let valuesArr = Object.values(user);
-        arrValuesAll.push(valuesArr);
-        let valuesArrKeys = Object.values(user.address);
-        arrValuesAll.push(valuesArrKeys);
-        console.log(arrValuesAll);
-
+    let arrValuesAll = [];
+    for (let argument of array) {
+        for (let element in argument) {
+            arrValuesAll.push(argument[element]);
+        }
     }
+    return arrValuesAll;
 }
 
-objectValuesArr();
+let arrValue = objectValuesArr([{name: 'Dima', age: 13}, {model: 'Camry'}]);
+console.log(arrValue);
 
 // 11) створити функцію  яка скаладає значення елементів з однаковими індексами  та повертає новий результуючий масив.
 //     EXAMPLE:
@@ -217,22 +216,16 @@ objectValuesArr();
 // результат
 //     [3,5,7,9]
 
-let arrNum1 = [1, 2, 3, 4];
-let arrNum2 = [2, 3, 4, 5,];
-
-function sumArrnum(array = []) {
+function sumArrnum(array1 = [],array2=[]) {
     let sumnum = [];
-    for (let i = 0; i < arrNum1.length; i++) {
-        for (i = 0; i < arrNum2.length; i++) {
-            let sum = arrNum1[i] + arrNum2[i];
-            sumnum.push(sum);
+    for (let num in array1 ) {
+            sumnum.push(array1[num] + array2[num]);
         }
-    }
     return sumnum;
 }
 
-sumArrnum();
-console.log(sumArrnum());
+let arrSumm =  sumArrnum([1, 2, 3, 4],[2, 3, 4, 5,]);
+console.log(arrSumm);
 
 // - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
 
@@ -250,7 +243,8 @@ function minMaxNum() {
     console.log(max)
     return min;
 }
-let minNums = minMaxNum(1,2,3,4,5,6,7,8,9,10);
+
+let minNums = minMaxNum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 console.log(minNums);
 
 //===================================================================================================================
@@ -330,7 +324,7 @@ normFunName(n3);
 // Створити функцію яка :
 // - Додає в боді блок з текстом "Hello owu"
 
-let str = ()=>{
+let str = () => {
     const str = document.createElement('div');
     str.innerHTML = `<h1>"Hello owu"</h1>`;
     document.body.appendChild(str);
@@ -340,13 +334,13 @@ str();
 
 // - Додає в боді елемент з текстом . Тип елементу та текст отримати через аргументи
 
-let strArgument = (elemnt = 'h6',text = 'Hello owu')=>{
+let strArgument = (elemnt = 'h6', text = 'Hello owu') => {
     const str = document.createElement(elemnt);
     str.innerHTML = `${text}`;
     document.body.appendChild(str);
 }
 
-strArgument('h1','Тип елементу та текст отриманий через аргументи');
+strArgument('h1', 'Тип елементу та текст отриманий через аргументи');
 
 // - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
 // Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали. Всі властивості авто в обному блоці
@@ -402,7 +396,7 @@ let cars = [{
 }];
 
 let getBlockCarWithId = (array = [], id = '') => {
-    for (car of cars) {
+    for (let car of cars) {
         const blockCar = document.createElement('div')
         blockCar.id = id;
         blockCar.innerHTML = `<h4>${car.id} ${car.brands} ${car.price}$  age:${car.age}years ${car.type} ${car.status}</h4>`;
