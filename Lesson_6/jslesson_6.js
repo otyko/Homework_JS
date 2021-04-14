@@ -72,24 +72,30 @@ const users = [
 // a) відсортувати його за  віком (зростання , а потім окремо спадання)
 
 let ageUp = users.sort((a, b) => a.age - b.age);
-
+let ageDoun = users.sort((a, b) => b.age - a.age);
 
 // b) відсортувати його за кількістю знаків в імені  (зростання , а потім окремо спадання)
 
-let ageDoun = users.sort((a, b) => b.age - a.age);
-
+let srtNameUP = users.sort((a, b) => a.name.length - b.name.length);
+let srtNameDoun = users.sort((a, b) => b.name.length - a.name.length);
 
 // c) пройтись по ньому та додати кожному юзеру поле id - яке характеризує унікальний індентифікатор (По якому принципу його створювати - ваше рішення),
-
- users.forEach((value, index) => value.id = 1 + index);
-console.log(users);
-
 // та зберегти це в новий масив (первинний масив залишиться без змін)
-
+let userWitsId = [...users];
+userWitsId.forEach((value, index) => value.id = 1 + index);
+console.log(userWitsId == users);
+console.log(userWitsId);
 
 // d) відсортувати його за індентифікатором
+
+userWitsId.sort((a, b) => a.id - b.id);
+console.log(userWitsId);
+
 // e) Всі хто одружений мають попасти у новий масив та отрмати квартиру (reduce)
-//
+
+let userFlat = userWitsId.reduce((acc, array) => array.isMarried ? [...acc, {...array, flat: true}] : acc, []);
+console.log(userFlat);
+
 // ______________________________________________________________________________________________________________________________________________________
 // РОБОТА В АУДИТОРІЇ
 // ______________________________________________________________________________________________________________________________________________________
